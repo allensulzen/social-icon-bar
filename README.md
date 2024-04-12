@@ -1,2 +1,2 @@
 # social-icon-bar
-A Web Component that presents social media icons and links.
+A Web Component that displays social media icons and links.

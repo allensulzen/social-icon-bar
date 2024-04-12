@@ -1,0 +1,30 @@
+{
+  "name": "@allensulzen/social-icon-bar",
+  "version": "1.0.0",
+  "description": "A Web Component that displays social media icons and links.",
+  "main": "social-icon-bar.js",
+  "scripts": {
+    "minify": "terser social-icon-bar.js -c ecma=2015,computed_props=false -o social-icon-bar.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allensulzen/social-icon-bar.git"
+  },
+  "keywords": [
+    "Web",
+    "Component",
+    "Social",
+    "Media",
+    "Icons",
+    "Links"
+  ],
+  "author": "Allen Sulzen",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/allensulzen/social-icon-bar/issues"
+  },
+  "homepage": "https://github.com/allensulzen/social-icon-bar#readme",
+  "devDependencies": {
+    "terser": "^5.30.3"
+  }
+}
