@@ -28,10 +28,17 @@
 <body>
    <main>
         <h1>Social Icon Bar</h1>
-        <social-icon-bar icons='[
-            {"site": "facebook", "url": "https://facebook.com"},
-            {"site": "tiktok", "url": "https://tiktok.com"}
-        ]'></social-icon-bar>
+        <social-icon-bar 
+            icons='[
+                {"site": "facebook", "url": "https://facebook.com", "targetBlank": true},
+                {"site": "tiktok", "url": "https://tiktok.com"}
+            ]'
+            align-icons="left"
+            position="bottom"
+        >
+            <span slot="before">Example</span>
+            <span slot="after">Sure...</span>
+        </social-icon-bar>
     </main>
 </body>
 </html>
