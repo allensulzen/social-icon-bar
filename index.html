@@ -30,13 +30,15 @@
         <h1>Social Icon Bar</h1>
         <social-icon-bar 
             icons='[
-                {"site": "facebook", "url": "https://facebook.com", "targetBlank": true},
-                {"site": "tiktok", "url": "https://tiktok.com"}
+                {"site": "facebook", "url": "https://facebook.com", "targetBlank": true, "hoverColor": "green"},
+                {"site": "tiktok", "url": "https://tiktok.com", "color": "yellow", "hoverColor": "rebeccapurple"}
             ]'
             align-icons="left"
             position="bottom"
+            background-color="slategray"
+            icon-color="red"
         >
-            <span slot="before">Example</span>
+            <span slot="before">Follow Us Online</span>
             <span slot="after">Sure...</span>
         </social-icon-bar>
     </main>

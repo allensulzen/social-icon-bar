@@ -14,6 +14,9 @@ class SocialIconBar extends HTMLElement {
      * | iconColor | Color of the icon. Default is `white`. |
      * | align | Alignment of the icon bar. Default is `center`. |
      * | position | Position of the icon bar. Default is `top`. |
+     * | iconHoverColor | Hover color of the icon. Default is `skyblue`. |
+     * | iconSize | Size of the icon. Default is `1.5rem`. |
+     * 
      * Slots
      * | Slot | Description |
      * |------|-------------|
@@ -81,7 +84,7 @@ class SocialIconBar extends HTMLElement {
         Promise.all(svgArrPromises).then(svgArr => {
             const svgStr = svgArr.map((svg, index) => {
                 return `
-                    <a href="${_icons[index].url}" target="${_icons[index].targetBlank ? '_blank' : ''}" class="social-icon-bar__icon">
+                    <a href="${_icons[index].url}" target="${_icons[index].targetBlank ? '_blank' : ''}" class="social-icon-bar__icon ${_icons[index].site}">
                         ${svg}
                     </a>
                 `;
@@ -117,6 +120,18 @@ class SocialIconBar extends HTMLElement {
                     .social-icon-bar__icon:hover {
                         color: ${this.iconHoverColor || 'skyblue'};
                     }
+
+                    ${_icons.map(icon => {
+                        return `
+                            .social-icon-bar__icon.${icon.site} {
+                                ${icon.color ? `color: ${icon.color};` : ''}
+                            }
+
+                            .social-icon-bar__icon.${icon.site}:hover {
+                                ${icon.hoverColor ? `color: ${icon.hoverColor};` : ''}
+                            }
+                        `;
+                    }).join('')}
                 </style>
                 <div class="social-icon-bar">
                     <slot name="before"></slot>
