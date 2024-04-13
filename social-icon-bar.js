@@ -12,7 +12,7 @@ class SocialIconBar extends HTMLElement {
      * | prefix | Icon prefix. Default is `bxl`. |
      * | backgroundColor | Background color of the icon bar. Default is `black`. |
      * | iconColor | Color of the icon. Default is `white`. |
-     * | align | Alignment of the icon bar. Default is `center`. |
+     * | alignIcons | Alignment of the icon bar. Default is `center`. |
      * | position | Position of the icon bar. Default is `top`. |
      * | iconHoverColor | Hover color of the icon. Default is `skyblue`. |
      * | iconSize | Size of the icon. Default is `1.5rem`. |
