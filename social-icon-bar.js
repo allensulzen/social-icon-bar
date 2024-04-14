@@ -24,7 +24,7 @@ class SocialIconBar extends HTMLElement {
      * | after | Slot for content after the icons. |
      */
     static get observedAttributes() {
-        return ['icons', 'prefix', 'background-color', 'icon-color', 'align-icons', 'position', 'icon-hover-color', 'icon-size'];
+        return ['icons', 'brand-prefix', 'background-color', 'icon-color', 'align-icons', 'position', 'icon-hover-color', 'icon-size'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -77,7 +77,7 @@ class SocialIconBar extends HTMLElement {
     
         const _icons = JSON.parse(this.icons);
         const svgArrPromises = _icons.map(icon => {
-            return fetch(`https://api.iconify.design/${this.prefix || 'bxl'}/${icon.site}.svg`)
+            return fetch(`https://api.iconify.design/${this.brandPrefix || 'bxl'}/${icon.site}.svg`)
                 .then(response => response.text());
         });
     

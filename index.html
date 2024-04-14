@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,21 @@
     <script src="social-icon-bar.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Include your favorite highlight.js stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css"
+        rel="stylesheet">
+
+    <!-- Include the highlight.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- Include stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.snow.css" rel="stylesheet" />
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.5/dist/quill.js"></script>
     <style>
         body {
             font-family: Poppins, sans-serif;
@@ -23,24 +38,192 @@
         h1 {
             text-align: center;
         }
+
+        table {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            border-bottom: 1px solid gray;
+            background-color: #f1f1f1;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        th, td {
+            padding: 0.5rem;
+        }
+
+        td:not(:last-child) {
+            border-right: 1px solid gray;
+        }
+
+        tr:not(:last-child) {
+            border-bottom: 1px solid gray;
+        }
     </style>
 </head>
+
 <body>
-   <main>
+    <main>
         <h1>Social Icon Bar</h1>
-        <social-icon-bar 
-            icons='[
-                {"site": "facebook", "url": "https://facebook.com", "targetBlank": true, "hoverColor": "green"},
-                {"site": "tiktok", "url": "https://tiktok.com", "color": "yellow", "hoverColor": "rebeccapurple"}
-            ]'
-            align-icons="left"
-            position="bottom"
-            background-color="slategray"
-            icon-color="red"
-        >
-            <span slot="before">Follow Us Online</span>
-            <span slot="after">Sure...</span>
-        </social-icon-bar>
+        <p>The component displays a fixed position social media icon bar with customizable properties. Use the controls
+            below to try out different properties.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Control</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Position</td>
+                    <td>
+                        <select id="position">
+                            <option value="top">top</option>
+                            <option value="bottom">bottom</option>
+                            <option value="left">left</option>
+                            <option value="right">right</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Align Icons</td>
+                    <td>
+                        <select id="align-icons">
+                            <option value="left">left</option>
+                            <option value="center">center</option>
+                            <option value="right" selected>right</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Icon Size</td>
+                    <td>
+                        <input type="range" min="16" max="64" value="24" id="icon-size">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Background Color</td>
+                    <td>
+                        <input type="color" id="background-color-picker">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Icon Color</td>
+                    <td>
+                        <input type="color" id="icon-color-picker" value="#ffffff">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Icon Hover Color</td>
+                    <td>
+                        <input type="color" id="icon-hover-color-picker" value="#87CEEB">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Brand Prefix</td>
+                    <td>
+                        <input type="text" id="brand-prefix" value="bxl">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Icons (JSON)</td>
+                    <td>
+                        <div id="editor"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <social-icon-bar icons='[
+                    {"site": "facebook", "url": "https://facebook.com", "hoverColor": "skyblue"},
+                    {"site": "tiktok", "url": "https://tiktok.com", "hoverColor": "slategray"},
+                    {"site": "pinterest", "url": "https://pinterest.com", "hoverColor": "red"},
+                    {"site": "instagram", "url": "https://instagram.com", "hoverColor": "orange"},
+                    {"site": "youtube", "url": "https://youtube.com", "hoverColor": "red"}
+                ]' align-icons="right" position="top"></social-icon-bar>
     </main>
+    <footer>
+        <script>
+            const position = document.getElementById('position');
+            const socialIconBar = document.querySelector('social-icon-bar');
+
+            position.addEventListener('change', () => {
+                socialIconBar.setAttribute('position', position.value);
+            });
+
+            const alignIcons = document.getElementById('align-icons');
+            alignIcons.addEventListener('change', () => {
+                socialIconBar.setAttribute('align-icons', alignIcons.value);
+            });
+
+            const iconSize = document.getElementById('icon-size');
+            iconSize.addEventListener('input', () => {
+                socialIconBar.setAttribute('icon-size', `${iconSize.value}px`);
+            });
+
+            const backgroundColorPicker = document.getElementById('background-color-picker');
+            backgroundColorPicker.addEventListener('input', () => {
+                socialIconBar.setAttribute('background-color', backgroundColorPicker.value);
+            });
+
+            const iconColorPicker = document.getElementById('icon-color-picker');
+            iconColorPicker.addEventListener('input', () => {
+                socialIconBar.setAttribute('icon-color', iconColorPicker.value);
+            });
+
+            const iconHoverColorPicker = document.getElementById('icon-hover-color-picker');
+            iconHoverColorPicker.addEventListener('input', () => {
+                socialIconBar.setAttribute('icon-hover-color', iconHoverColorPicker.value);
+            });
+
+            const brandPrefix = document.getElementById('brand-prefix');
+            brandPrefix.addEventListener('change', () => {
+                socialIconBar.setAttribute('brand-prefix', brandPrefix.value);
+            });
+
+            // quill js
+            const quill = new Quill('#editor', {
+                modules: {
+                    syntax: true,              // Include syntax module
+                    toolbar: [['code-block']]  // Include button in toolbar
+                },
+                theme: 'snow'
+            });
+
+            const Delta = Quill.import('delta');
+            quill.setContents(
+                new Delta()
+                    .insert('[')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert('    {"site": "facebook", "url": "https://facebook.com", "hoverColor": "skyblue"},')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert('    {"site": "tiktok", "url": "https://tiktok.com", "hoverColor": "slategray"},')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert('    {"site": "pinterest", "url": "https://pinterest.com", "hoverColor": "red"},')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert('    {"site": "instagram", "url": "https://instagram.com", "hoverColor": "orange"},')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert('    {"site": "youtube", "url": "https://youtube.com", "hoverColor": "red"}')
+                    .insert('\n', { 'code-block': 'javascript' })
+                    .insert(']')
+                    .insert('\n', { 'code-block': 'javascript' })
+            );
+
+            quill.on('text-change', (delta, oldDelta, source) => {
+                if (source == 'api') {
+                    console.log('An API call triggered this change.');
+                } else if (source == 'user') {
+                    document.querySelector('social-icon-bar').setAttribute('icons', quill.getText());
+                }
+            });
+        </script>
+    </footer>
 </body>
+
 </html>

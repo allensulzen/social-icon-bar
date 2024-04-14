@@ -3,6 +3,24 @@
 A custom web component for displaying a bar of social media icons.
 
 ## Usage
+
+### NPM
+
+To install the package, run the following command:
+
+```bash
+npm install @allensulzen/social-icon-bar
+```
+
+Then import the package into your project:
+
+```javascript
+import 'social-icon-bar';
+```
+
+### CDN
+
+To use the package via CDN, include the following script tag in your HTML file:
 ```html
 <script src="https://unpkg.com/@allensulzen/social-icon-bar"></script>
 ```
@@ -38,7 +56,8 @@ A custom web component for displaying a bar of social media icons.
     align-icons="center"
     position="top"
     iconHoverColor="skyblue"
-    iconSize="1.5rem">
+    iconSize="1.5rem"
+>
     <div slot="before">Content before the icons</div>
     <div slot="after">Content after the icons</div>
 </social-icon-bar>
