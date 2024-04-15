@@ -45,6 +45,12 @@ To use the package via CDN, include the following script tag in your HTML file:
 | `before` | Slot for content before the icons. |
 | `after` | Slot for content after the icons. |
 
+## Events
+
+| Event | Description |
+|-------|-------------|
+| `socialIconBarRender` | Event fired when the component renders. |
+
 ## Usage
 
 ```html

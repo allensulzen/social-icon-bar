@@ -140,6 +140,8 @@ class SocialIconBar extends HTMLElement {
                 </div>
             `;
         });
+
+        this.dispatchEvent(new CustomEvent('socialIconBarRender'));
     }
 }
 
